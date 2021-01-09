@@ -57,6 +57,8 @@ public class SignUpActivity extends AppCompatActivity {
     //View binding in use
     private ActivitySignUpBinding binding;
 
+    private ProgressDialog progressDialog;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -88,7 +90,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     //Sign up new user method
     private void SignUp() {
-        final ProgressDialog progressDialog = new ProgressDialog(SignUpActivity.this);
+        progressDialog = new ProgressDialog(SignUpActivity.this);
         progressDialog.setMessage("Signing Up");
         progressDialog.setCancelable(false);
         progressDialog.show();
@@ -98,36 +100,7 @@ public class SignUpActivity extends AppCompatActivity {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
                             if (task.isSuccessful()) {
-                                DataBaseAdapter adapter = new DataBaseAdapter(SignUpActivity.this);
-                                long id = adapter.insert(name, email, "", "", "", "", "");
-                                if (id < 0) {
-                                    Toast.makeText(SignUpActivity.this, "Data was not saved on room", Toast.LENGTH_SHORT).show();
-                                }
-                                Map<String, Object> map = new HashMap<>();
-                                map.put("Name", name);
-                                map.put("Email", email);
-                                map.put("Phone", "null");
-                                map.put("Postcode", "null");
-                                map.put("Country", "null");
-                                map.put("Address", "null");
-                                map.put("Image", "null");
-                                myRef.child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                    @Override
-                                    public void onComplete(@NonNull Task<Void> task) {
-                                        if (task.isSuccessful()) {
-                                            SharedPreferences preferences = getApplicationContext().getSharedPreferences("LoginDetails", MODE_PRIVATE);
-                                            SharedPreferences.Editor editor = preferences.edit();
-                                            editor.putBoolean("isLogin", true);
-                                            editor.putBoolean("isAdmin", false);
-                                            editor.apply();
-                                            startActivity(new Intent(SignUpActivity.this, MainActivity.class));
-                                            finish();
-                                        } else {
-                                            Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                        }
-                                        progressDialog.dismiss();
-                                    }
-                                });
+                                sendVerificationEmail();
                             } else {
                                 progressDialog.dismiss();
                                 Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -325,6 +298,69 @@ public class SignUpActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void sendVerificationEmail() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+
+        user.sendEmailVerification()
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // email sent
+
+                            DataBaseAdapter adapter = new DataBaseAdapter(SignUpActivity.this);
+                            long id = adapter.insert(name, email, "", "", "", "", "");
+                            if (id < 0) {
+                                Toast.makeText(SignUpActivity.this, "Data was not saved on room", Toast.LENGTH_SHORT).show();
+                            }
+                            Map<String, Object> map = new HashMap<>();
+                            map.put("Name", name);
+                            map.put("Email", email);
+                            map.put("Phone", "null");
+                            map.put("Postcode", "null");
+                            map.put("Country", "null");
+                            map.put("Address", "null");
+                            map.put("Image", "null");
+                            myRef.child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        SharedPreferences preferences = getApplicationContext().getSharedPreferences("LoginDetails", MODE_PRIVATE);
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.putBoolean("isLogin", true);
+                                        editor.putBoolean("isAdmin", false);
+                                        editor.apply();
+                                        FirebaseAuth.getInstance().signOut();
+                                        Toast.makeText(SignUpActivity.this, "Signup successfully, Please verify your eamil to login", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                        finish();
+                                    } else {
+                                        Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                    progressDialog.dismiss();
+                                }
+                            });
+
+
+                            // after email is sent just logout the user and finish this activity
+
+                            finish();
+                        }
+                        else
+                        {
+                            // email not sent, so display message and restart the activity or do whatever you wish to do
+
+                            //restart this activity
+                            overridePendingTransition(0, 0);
+                            finish();
+                            overridePendingTransition(0, 0);
+                            startActivity(getIntent());
+
+                        }
+                    }
+                });
     }
 
 }

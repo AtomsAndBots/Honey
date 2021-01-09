@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/logout"
+        android:iconTint="@color/black"
+        android:title="@string/logout_menu_item" />
+
+    <item
+        android:id="@+id/delete_account_btn"
+        android:iconTint="@color/black"
+        android:title="@string/delete_account_menu" />
+</menu>

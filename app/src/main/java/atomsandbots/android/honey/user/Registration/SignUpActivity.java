@@ -333,7 +333,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         editor.putBoolean("isAdmin", false);
                                         editor.apply();
                                         FirebaseAuth.getInstance().signOut();
-                                   //     Toast.makeText(SignUpActivity.this, "Signup successfully, Please verify your eamil to login", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignUpActivity.this, "Signup successfully, Please verify your eamil to login", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
                                         finish();
                                     } else {

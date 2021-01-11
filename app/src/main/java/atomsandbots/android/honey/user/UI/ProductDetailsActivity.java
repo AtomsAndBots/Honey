@@ -70,8 +70,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    bind.enterInDraw.setText(R.string.entered);
-                    bind.enterInDraw.setEnabled(false);
+                    bind.enterInDraw.setText("Remove Withdraw");
                 }
             }
 
@@ -86,7 +85,11 @@ public class ProductDetailsActivity extends AppCompatActivity {
         bind.enterInDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                EnterInDraw(product);
+                if (bind.enterInDraw.getText().toString().equalsIgnoreCase("Remove Withdraw")){
+                    RemoveWithdraw(product.getProductId());
+                } else {
+                    EnterInDraw(product);
+                }
             }
         });
         if (isAdmin) {
@@ -190,6 +193,18 @@ public class ProductDetailsActivity extends AppCompatActivity {
             bind.linearLayoutPrice.setVisibility(View.GONE);
         }
 
+    }
+
+    private void RemoveWithdraw(String productId) {
+        reference.child(productId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    Toast.makeText(ProductDetailsActivity.this, "Withdraw Removed", Toast.LENGTH_SHORT).show();
+                    bind.enterInDraw.setText("Enter in Draw");
+                }
+            }
+        });
     }
 
     private void checkLikeStatus(String id) {

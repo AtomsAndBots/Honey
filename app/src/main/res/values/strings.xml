@@ -16,11 +16,11 @@
     <string name="no_internet_exit_button">Exit</string>
     <string name="no_internet_retry_button">Retry</string>
     <string name="have_or_not_have_account_txtcolor">#FF9800</string>
-    <string name="update_profile_successfully">Updated successfully</string>
+    <string name="update_profile_successfully">Update successful</string>
     <string name="select_chooser">Select any Image</string>
     <string name="no_image_select">No Image is selected</string>
     <string name="check_you_email">Please check your email</string>
-    <string name="enter_in_draw_successfully">Entered successfully</string>
+    <string name="enter_in_draw_successfully">Entered!</string>
     <string name="enter_in_draw_failed">Failed</string>
     <string name="add_a_new_product">Add a new Product</string>
     <string name="upload_photo">Upload Photo</string>
@@ -46,7 +46,7 @@
     <string name="product_price">Product Price</string>
     <string name="description">Description</string>
     <string name="save">Save</string>
-    <string name="enter_in_draw">Enter Now</string>
+    <string name="enter_in_draw">Enter</string>
     <string name="create_account">Create Account</string>
     <string name="login">Login</string>
     <string name="HoneyBox">HoneyBox</string>
@@ -73,14 +73,14 @@
     <string name="about">About</string>
     <string name="coming_soon">Coming Soon</string>
     <string name="entered">Entered</string>
-    <string name="about_body_two">We also work with social media influencers as well as small to medium
-        size businesses to provide a wide array of promotional items to chose from which will
-        be available to use in free of charge giveaways.Our current draws are free to enter and upon winning
-        we will send the prize to the winner after confirming their credentials.</string>
-    <string name="about_body_one">Honey Collaboration is a Giveaway/eCommerce platform based in the United Kingdom.
-        We run giveaways on many different items such as Gadgets, Sports Gear, Fashion item etc.</string>
+    <string name="about_body_two">
+    We also work in collaboration with businesses and entrepreneurs to offer promotional items to Honey users delivered to your
+        doorstep free of charge. Stick with us and enjoy the benefits. </string>
+    <string name="about_body_one">Honey Collaboration is a Giveaway and eCommerce platform based in the United Kingdom.
+        Our aim is to provide users with seamless and stress-free ways to enter giveaways
+        on a wide array of items from small prizes to aspirational brands and premium products all in one place.  </string>
     <string name="about_contact_us">Contact Us</string>
-    <string name="about_header">What is Honey Co.?</string>
+    <string name="about_header">What is Honey Collaborations.?</string>
     <string name="about_title">Honey Co.</string>
     <string name="logout_menu_item">Logout</string>
     <string name="about_email_image">about_email_image</string>

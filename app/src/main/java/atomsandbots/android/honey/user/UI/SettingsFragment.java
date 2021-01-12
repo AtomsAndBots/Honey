@@ -210,7 +210,7 @@ public class SettingsFragment extends Fragment {
         AlertDialog.Builder dialog = new AlertDialog.Builder(getContext());
         dialog.setTitle("Delete Account")
                 .setMessage("Are you sure to delete account?")
-                .setPositiveButton("Yes,", new DialogInterface.OnClickListener() {
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();

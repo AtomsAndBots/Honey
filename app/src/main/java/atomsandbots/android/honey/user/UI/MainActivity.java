@@ -11,7 +11,6 @@ import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -48,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView userNameTextView, userEmailTextView;
 
     private CircleImageView profileImageView;
-    private ImageView networkConnectionImage;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -108,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-
+        // Find Views to bind data on NavigationView (nav_header_main.xml)
         View headerView = navigationView.getHeaderView(0);
         userNameTextView = headerView.findViewById(R.id.header_name);
         userEmailTextView = headerView.findViewById(R.id.header_email);
@@ -145,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.exists()) {
                             UserModel user = snapshot.getValue(UserModel.class);
+                            assert user != null;
                             userNameTextView.setText(user.getName());
                             userEmailTextView.setText(user.getEmail());
                             if (user.getImage().equalsIgnoreCase("null")) {
@@ -166,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    //This alert dialog will appear should the user open MainActivity when all network == null
+    //This alert dialog will appear should the user open MainActivity when all networks == null
     private void alertDialog() {
         ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
         final NetworkInfo netInfo = conMgr.getActiveNetworkInfo();

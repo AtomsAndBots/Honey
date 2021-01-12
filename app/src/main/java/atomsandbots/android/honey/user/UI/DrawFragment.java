@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -47,11 +48,15 @@ public class DrawFragment extends Fragment {
 
         drawRecyclerView = view.findViewById(R.id.draw_recyclerView);
 
+
+
+
         final List<ProductModel> productModelList = new ArrayList<>();
         drawRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         drawRecyclerView.setHasFixedSize(true);
         drawRecyclerView.setItemViewCacheSize(20);
         drawRecyclerView.setDrawingCacheEnabled(true);
+
 
         ConnectivityManager conMgr = (ConnectivityManager) requireActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo netInfo = conMgr.getActiveNetworkInfo();

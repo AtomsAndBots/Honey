@@ -57,7 +57,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         boolean isAdmin = getIntent().getBooleanExtra("isAdmin", false);
         boolean drawStatus = getIntent().getBooleanExtra("drawStatus", false);
         boolean isRate = getIntent().getBooleanExtra("isRate", false);
-        boolean isDraw = getIntent().getBooleanExtra("isDraw", false);
+        final boolean isDraw = getIntent().getBooleanExtra("isDraw", false);
 
         // check draw status only first 2 products are available for draw
         if (!drawStatus) {
@@ -70,7 +70,10 @@ public class ProductDetailsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
-                    bind.enterInDraw.setText("Remove Withdraw");
+                    bind.enterInDraw.setText("Withdraw");
+                }else if (isDraw){
+                    //set button to invisible when Your Giveaways fragment is true
+                    bind.enterInDraw.setVisibility(View.GONE);
                 }
             }
 
@@ -85,7 +88,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         bind.enterInDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bind.enterInDraw.getText().toString().equalsIgnoreCase("Remove Withdraw")){
+                if (bind.enterInDraw.getText().toString().equalsIgnoreCase("Withdraw")){
                     RemoveWithdraw(product.getProductId());
                 } else {
                     EnterInDraw(product);
@@ -187,7 +190,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             });
         }
 
-        // if view from Rate or Hate screen the enter in draw visibility gone and price also
+        // if Explore fragment is true, set enter in draw visibility gone and price also
         if (isRate) {
             bind.enterInDraw.setVisibility(View.INVISIBLE);
             bind.linearLayoutPrice.setVisibility(View.GONE);
@@ -195,13 +198,15 @@ public class ProductDetailsActivity extends AppCompatActivity {
 
     }
 
+    //Withdraw user from draw logic.
     private void RemoveWithdraw(String productId) {
         reference.child(productId).removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Toast.makeText(ProductDetailsActivity.this, "Withdraw Removed", Toast.LENGTH_SHORT).show();
-                    bind.enterInDraw.setText("Enter in Draw");
+                    //Toast set text to withdraw and set button text to 'enter'
+                    Toast.makeText(ProductDetailsActivity.this, "Withdrawn", Toast.LENGTH_SHORT).show();
+                    bind.enterInDraw.setText("Enter");
                 }
             }
         });

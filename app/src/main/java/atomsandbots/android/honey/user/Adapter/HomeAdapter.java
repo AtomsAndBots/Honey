@@ -39,7 +39,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private final List<ProductModel> productModelList;
     private final Context context;
 
-// isRate check if the view is come from Rate or Hate activity or not.
+   //Check layout to display correct data accordingly
     public HomeAdapter(List<ProductModel> productModelList, Context context, boolean isProductLayout, boolean isAdmin,boolean isRate) {
         this.productModelList = productModelList;
         this.context = context;
@@ -59,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         }
         return new ViewHolder(view);
     }
-
+    // Check to see which layout is true on getItemViewType
     @Override
     public int getItemViewType(int position) {
         if (isProductLayout) {
@@ -80,7 +80,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         holder.setData(image, name, cat, price);
 
         //Go to product details activity
-
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

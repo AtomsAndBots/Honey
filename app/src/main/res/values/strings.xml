@@ -111,4 +111,5 @@
     <string name="tool_bar_image">Tool Bar Image</string>
     <string name="rate_intro_iv">rate intro iv</string>
     <string name="delete_account_menu">Delete account</string>
+    <string name="verify_your_email">Verify your Email</string>
 </resources>

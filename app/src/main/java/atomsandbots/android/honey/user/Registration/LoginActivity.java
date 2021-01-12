@@ -394,12 +394,8 @@ LoginActivity extends AppCompatActivity {
         {
             // email is not verified, so just prompt the message to the user and restart this activity.
             // NOTE: don't forget to log out the user.
-            FirebaseAuth.getInstance().signOut();
-            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-            builder.setTitle("Email Verification");
-            builder.setMessage("Please verify your email address an login again");
-            builder.show();
-
+//            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(LoginActivity.this, VerificationActivity.class));
             //restart this activity
 
         }

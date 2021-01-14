@@ -332,10 +332,10 @@ public class SignUpActivity extends AppCompatActivity {
                                         editor.putBoolean("isLogin", true);
                                         editor.putBoolean("isAdmin", false);
                                         editor.apply();
-                                        FirebaseAuth.getInstance().signOut();
-                                        Toast.makeText(SignUpActivity.this, "Signup successfully, Please verify your eamil to login", Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
-                                        finish();
+//                                        FirebaseAuth.getInstance().signOut();
+                                        Toast.makeText(SignUpActivity.this, "successful, Please verify your emil to login", Toast.LENGTH_SHORT).show();
+                                        startActivity(new Intent(SignUpActivity.this, VerificationActivity.class));
+                                        finishAffinity();
                                     } else {
                                         Toast.makeText(SignUpActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                     }
@@ -346,7 +346,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             // after email is sent just logout the user and finish this activity
 
-                            finish();
+                            //     finish();
                         }
                         else
                         {

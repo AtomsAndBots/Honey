@@ -18,4 +18,5 @@
     <!-- The color below matches the logo, it's used to match the text with logo
      when using Firebase Push Notifications-->
     <color name="honey_yellow">#FF9800</color>
+
 </resources>

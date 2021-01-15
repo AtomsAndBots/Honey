@@ -8,12 +8,15 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+
 import atomsandbots.android.honey.user.R;
 import atomsandbots.android.honey.user.UI.MainActivity;
 import atomsandbots.android.honey.user.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
-
+    private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setTheme(R.style.AppTheme);
@@ -22,6 +25,8 @@ public class RegisterActivity extends AppCompatActivity {
                 = ActivityRegisterBinding.inflate(getLayoutInflater());
         View v = binding.getRoot();
         setContentView(v);
+
+        mAuth = FirebaseAuth.getInstance();
 
 
         binding.loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -57,8 +62,16 @@ public class RegisterActivity extends AppCompatActivity {
             if (isAdmin) {
                 Toast.makeText(this, "Check Internet Connection", Toast.LENGTH_SHORT).show();
             } else {
-                startActivity(new Intent(RegisterActivity.this, MainActivity.class));
-                finish();
+                FirebaseUser user = mAuth.getCurrentUser();
+                if (user != null) {
+                    if (user.isEmailVerified()) {
+                        startActivity(new Intent(RegisterActivity.this, MainActivity.class));
+                        finish();
+                    } else {
+                        FirebaseAuth.getInstance().signOut();
+                    }
+                }
+
             }
         }
 

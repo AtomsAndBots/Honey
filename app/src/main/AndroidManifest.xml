@@ -14,55 +14,58 @@
         android:roundIcon="@mipmap/ic_hc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
+        <activity android:name=".Registration.VerificationActivity" />
         <activity
-            android:name="atomsandbots.android.honey.user.UI.SplashActivity"
-            android:theme="@style/SplashTheme">
-        </activity>
+            android:name=".UI.SplashActivity"
+            android:theme="@style/SplashTheme" />
         <activity
-            android:name="atomsandbots.android.honey.user.AdminPanel.NewProductActivity"
+            android:name=".AdminPanel.NewProductActivity"
             android:windowSoftInputMode="adjustPan" />
-        <activity android:name="atomsandbots.android.honey.user.AdminPanel.AdminMainActivity" />
-        <activity android:name="atomsandbots.android.honey.user.UI.ForgotPasswordActivity" />
-        <activity android:name="atomsandbots.android.honey.user.UI.ProductDetailsActivity" />
+        <activity android:name=".AdminPanel.AdminMainActivity" />
+        <activity android:name=".UI.ForgotPasswordActivity" />
+        <activity android:name=".UI.ProductDetailsActivity" />
         <activity
-            android:name="atomsandbots.android.honey.user.UI.MainActivity"
+            android:name=".UI.MainActivity"
             android:label="@string/title_activity_main"
             android:theme="@style/AppTheme"
             android:windowSoftInputMode="adjustPan" />
         <activity
-            android:name="atomsandbots.android.honey.user.Registration.SignUpActivity"
+            android:name=".Registration.SignUpActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name="atomsandbots.android.honey.user.Registration.LoginActivity"
+            android:name=".Registration.LoginActivity"
             android:screenOrientation="portrait" />
-        <activity android:name="atomsandbots.android.honey.user.Registration.RegisterActivity">
+        <activity android:name=".Registration.RegisterActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-
-        <!-- Set custom default icon. This is used when no icon is set for incoming notification messages.
-     See README(https://goo.gl/l4GJaQ) for more. -->
+        <!--
+ Set custom default icon. This is used when no icon is set for incoming notification messages.
+     See README(https://goo.gl/l4GJaQ) for more.
+        -->
         <meta-data
             android:name="com.google.firebase.messaging.default_notification_icon"
             android:resource="@drawable/ic_app" />
-        <!-- Set color used with incoming notification messages. This is used when no color is set for the incoming
-             notification message. See README(https://goo.gl/6BKBk7) for more. -->
+        <!--
+ Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
         <meta-data
-
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/honey_yellow" />
 
-        <receiver android:name="atomsandbots.android.honey.user.Widget.HoneyWidgetProvider">
+        <receiver android:name=".Widget.HoneyWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
             </intent-filter>
+
             <meta-data
                 android:name="android.appwidget.provider"
                 android:resource="@xml/widget_info" />
         </receiver>
     </application>
+
 </manifest>

@@ -111,4 +111,8 @@
     <string name="tool_bar_image">Tool Bar Image</string>
     <string name="rate_intro_iv">rate intro iv</string>
     <string name="delete_account_menu">Delete account</string>
+    <string name="verify_your_email">Verify Your Email</string>
+    <string name="we_ve_sent_you_a_confirmation_email_nplease_check_your_email_and_verify">We\'ve sent you a confirmation email.
+        \nPlease Verify and Restart App to Login</string>
+    <string name="JSON_URL">https://assets8.lottiefiles.com/packages/lf20_EjPIem.json</string>
 </resources>

@@ -256,6 +256,7 @@ LoginActivity extends AppCompatActivity {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso);
 
+
         //Google sign-in in create account activity
         binding.googleSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -352,11 +353,11 @@ LoginActivity extends AppCompatActivity {
         Map<String, Object> map = new HashMap<>();
         map.put("Name", user.getDisplayName());
         map.put("Email", user.getEmail());
-        map.put("Phone", "");
-        map.put("Postcode", "");
-        map.put("Country", "");
-        map.put("Address", "");
-        map.put("Image", "");
+        map.put("Phone", "null");
+        map.put("Postcode", "null");
+        map.put("Country", "null");
+        map.put("Address", "null");
+        map.put("Image", "null");
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
         myRef.child(user.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -376,7 +377,6 @@ LoginActivity extends AppCompatActivity {
     private void checkIfEmailVerified() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        assert user != null;
         if (user.isEmailVerified())
         {
             SharedPreferences preferences = getApplicationContext().getSharedPreferences("LoginDetails", MODE_PRIVATE);
@@ -394,12 +394,8 @@ LoginActivity extends AppCompatActivity {
         {
             // email is not verified, so just prompt the message to the user and restart this activity.
             // NOTE: don't forget to log out the user.
-            FirebaseAuth.getInstance().signOut();
-            AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
-            builder.setTitle("Email Verification");
-            builder.setMessage("Please verify your email address and login again");
-            builder.show();
-
+//            FirebaseAuth.getInstance().signOut();
+            startActivity(new Intent(LoginActivity.this, VerificationActivity.class));
             //restart this activity
 
         }

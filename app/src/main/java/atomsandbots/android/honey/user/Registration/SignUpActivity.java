@@ -112,6 +112,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
     }
 
+    //Email-password validation method
     private boolean Validation() {
         boolean valid = true;
         name = binding.signUpName.getText().toString().trim();
@@ -279,11 +280,11 @@ public class SignUpActivity extends AppCompatActivity {
         Map<String, Object> map = new HashMap<>();
         map.put("Name", user.getDisplayName());
         map.put("Email", user.getEmail());
-        map.put("Phone", "null");
-        map.put("Postcode", "null");
-        map.put("Country", "null");
-        map.put("Address", "null");
-        map.put("Image", "null");
+        map.put("Phone", "");
+        map.put("Postcode", "");
+        map.put("Country", "");
+        map.put("Address", "");
+        map.put("Image", "");
         DatabaseReference myRef = FirebaseDatabase.getInstance().getReference("Users");
         myRef.child(user.getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
@@ -318,11 +319,11 @@ public class SignUpActivity extends AppCompatActivity {
                             Map<String, Object> map = new HashMap<>();
                             map.put("Name", name);
                             map.put("Email", email);
-                            map.put("Phone", "null");
-                            map.put("Postcode", "null");
-                            map.put("Country", "null");
-                            map.put("Address", "null");
-                            map.put("Image", "null");
+                            map.put("Phone", "");//removed null text
+                            map.put("Postcode", "");
+                            map.put("Country", "");
+                            map.put("Address", "");
+                            map.put("Image", "");
                             myRef.child(mAuth.getCurrentUser().getUid()).setValue(map).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
                                 public void onComplete(@NonNull Task<Void> task) {
@@ -332,7 +333,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         editor.putBoolean("isLogin", true);
                                         editor.putBoolean("isAdmin", false);
                                         editor.apply();
-//                                        FirebaseAuth.getInstance().signOut();
+                                        //set text to successful
                                         Toast.makeText(SignUpActivity.this, "successful, Please verify your emil to login", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignUpActivity.this, VerificationActivity.class));
                                         finishAffinity();

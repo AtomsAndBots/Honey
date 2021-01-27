@@ -151,7 +151,7 @@ LoginActivity extends AppCompatActivity {
             }
         } else {
             if (Validation()) {
-                // check whatever email is from admin or users
+                // check if email is from admin or users
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Admin");
                 reference.addValueEventListener(new ValueEventListener() {
                     @Override

@@ -2,6 +2,7 @@ package atomsandbots.android.honey.user.Registration;
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -29,10 +30,9 @@ public class VerificationActivity extends AppCompatActivity {
         binding.goToInboxBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("\"message/rfc822\"");
-                Intent mailer = Intent.createChooser(intent, null);
-                startActivity(mailer);
+                Intent intent = new Intent(Intent.ACTION_MAIN);
+                intent.addCategory(Intent.CATEGORY_APP_EMAIL);
+                startActivity(intent);
             }
         });
 

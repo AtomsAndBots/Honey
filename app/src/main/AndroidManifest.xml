@@ -14,18 +14,11 @@
         android:roundIcon="@mipmap/ic_hc"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".UI.IntroActivity"
-            android:label="My Custom AppIntro"/>
+        <activity android:name=".UI.IntroActivity"/>
         <activity android:name=".Registration.VerificationActivity" />
         <activity
             android:name=".UI.SplashActivity"
-            android:theme="@style/SplashTheme">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+            android:theme="@style/SplashTheme"/>
         <activity
             android:name=".AdminPanel.NewProductActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -44,6 +37,11 @@
             android:name=".Registration.LoginActivity"
             android:screenOrientation="portrait" />
         <activity android:name=".Registration.RegisterActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <!--
  Set custom default icon. This is used when no icon is set for incoming notification messages.

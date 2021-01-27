@@ -40,6 +40,7 @@ import java.util.Map;
 
 import atomsandbots.android.honey.user.R;
 import atomsandbots.android.honey.user.RoomDatabase.DataBaseAdapter;
+import atomsandbots.android.honey.user.UI.IntroActivity;
 import atomsandbots.android.honey.user.UI.MainActivity;
 import atomsandbots.android.honey.user.databinding.ActivitySignUpBinding;
 
@@ -289,7 +290,7 @@ public class SignUpActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                    Intent intent = new Intent(SignUpActivity.this, IntroActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();

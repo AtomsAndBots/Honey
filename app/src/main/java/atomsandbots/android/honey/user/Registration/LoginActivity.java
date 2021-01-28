@@ -46,6 +46,7 @@ import atomsandbots.android.honey.user.AdminPanel.AdminMainActivity;
 import atomsandbots.android.honey.user.R;
 import atomsandbots.android.honey.user.RoomDatabase.DataBaseAdapter;
 import atomsandbots.android.honey.user.UI.ForgotPasswordActivity;
+import atomsandbots.android.honey.user.UI.IntroActivity;
 import atomsandbots.android.honey.user.UI.MainActivity;
 import atomsandbots.android.honey.user.databinding.ActivityLoginBinding;
 
@@ -363,7 +364,7 @@ LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
                     intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                     startActivity(intent);
                     finish();
@@ -385,7 +386,7 @@ LoginActivity extends AppCompatActivity {
             editor.putBoolean("isAdmin", false);
             editor.apply();
 
-            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

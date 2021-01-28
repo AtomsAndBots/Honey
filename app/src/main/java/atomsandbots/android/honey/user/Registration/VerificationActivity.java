@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import atomsandbots.android.honey.user.UI.IntroActivity;
 import atomsandbots.android.honey.user.UI.MainActivity;
 import atomsandbots.android.honey.user.databinding.ActivityVerificationBinding;
 
@@ -42,7 +43,7 @@ public class VerificationActivity extends AppCompatActivity {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         if (user.isEmailVerified()) {
-            startActivity(new Intent(VerificationActivity.this, MainActivity.class));
+            startActivity(new Intent(VerificationActivity.this, IntroActivity.class));
             finish();
         }
     }

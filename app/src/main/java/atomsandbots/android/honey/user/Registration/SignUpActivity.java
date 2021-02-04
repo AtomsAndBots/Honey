@@ -171,7 +171,7 @@ public class SignUpActivity extends AppCompatActivity {
         };
         spannableString.setSpan(clickableSpan, text1.length(), text1.length() + text2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         binding.loginText.setText(spannableString);
-        binding.loginText.setLinkTextColor(Color.parseColor(getString(R.string.have_or_not_have_account_txtcolor)));
+        binding.loginText.setLinkTextColor(Color.parseColor(getString(R.string.have_or_not_have_account_textColor)));
         binding.loginText.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -335,7 +335,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         editor.putBoolean("isAdmin", false);
                                         editor.apply();
                                         //set text to successful
-                                        Toast.makeText(SignUpActivity.this, "successful, Please verify your emil to login", Toast.LENGTH_SHORT).show();
+                                        Toast.makeText(SignUpActivity.this, "Signed In", Toast.LENGTH_SHORT).show();
                                         startActivity(new Intent(SignUpActivity.this, VerificationActivity.class));
                                         finishAffinity();
                                     } else {
@@ -347,13 +347,11 @@ public class SignUpActivity extends AppCompatActivity {
 
 
                             // after email is sent just logout the user and finish this activity
-
                             //     finish();
                         }
                         else
                         {
                             // email not sent, so display message and restart the activity or do whatever you wish to do
-
                             //restart this activity
                             overridePendingTransition(0, 0);
                             finish();

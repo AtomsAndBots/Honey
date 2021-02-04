@@ -48,7 +48,6 @@ public class MainActivity extends AppCompatActivity {
 
     private CircleImageView profileImageView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

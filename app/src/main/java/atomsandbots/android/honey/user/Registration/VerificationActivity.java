@@ -2,7 +2,6 @@ package atomsandbots.android.honey.user.Registration;
 
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,7 +11,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import atomsandbots.android.honey.user.UI.IntroActivity;
-import atomsandbots.android.honey.user.UI.MainActivity;
 import atomsandbots.android.honey.user.databinding.ActivityVerificationBinding;
 
 
@@ -22,12 +20,14 @@ public class VerificationActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        atomsandbots.android.honey.user.databinding.ActivityVerificationBinding binding = ActivityVerificationBinding.inflate(getLayoutInflater());
+        atomsandbots.android.honey.user.databinding.ActivityVerificationBinding binding =
+                ActivityVerificationBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
 
         checkEmail();
 
+        //Open email-drawer on user device via 'ACTION INTENT'
         binding.goToInboxBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

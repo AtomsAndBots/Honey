@@ -45,21 +45,6 @@ public class HomeFragment extends Fragment {
         setHasOptionsMenu(true);
     }
 
-    @Override
-    public void onCreateOptionsMenu(@NonNull Menu menu, @NonNull MenuInflater inflater) {
-        super.onCreateOptionsMenu(menu, inflater);
-        inflater.inflate(R.menu.home_menu, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.termcondition) {
-            //Code For Terms And condition
-            return true;
-        }
-        return false;
-    }
-
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_home, container, false);
 
@@ -93,7 +78,7 @@ public class HomeFragment extends Fragment {
                         ProductModel product = snapshot1.getValue(ProductModel.class);
                         productModelList.add(product);
                     }
-                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, false,false);
+                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, false, false);
                     homeRecyclerView.setAdapter(homeAdapter);
                     progressDialog.dismiss();
                     homeAdapter.notifyDataSetChanged();

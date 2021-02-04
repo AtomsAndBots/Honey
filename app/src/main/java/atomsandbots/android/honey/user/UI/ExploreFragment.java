@@ -29,7 +29,7 @@ import atomsandbots.android.honey.user.Extras.GridSpacingItemDecoration;
 import atomsandbots.android.honey.user.Model.ProductModel;
 import atomsandbots.android.honey.user.R;
 
-
+//Used to be 'rate or hate' fragment
 public class ExploreFragment extends Fragment {
     private RecyclerView rateRecyclerView;
 
@@ -96,7 +96,5 @@ public class ExploreFragment extends Fragment {
 
         return root;
     }
-
-
 
 }

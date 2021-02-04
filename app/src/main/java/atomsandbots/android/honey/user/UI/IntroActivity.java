@@ -1,10 +1,7 @@
 package atomsandbots.android.honey.user.UI;
 
 import android.content.Intent;
-
 import android.content.SharedPreferences;
-import android.graphics.Color;
-
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -13,10 +10,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
-import com.github.appintro.AppIntro;
-import com.github.appintro.AppIntroFragment;
 import com.google.android.material.tabs.TabLayout;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -27,7 +21,6 @@ import java.util.List;
 import atomsandbots.android.honey.user.Adapter.IntroViewPagerAdapter;
 import atomsandbots.android.honey.user.Model.ScreenItem;
 import atomsandbots.android.honey.user.R;
-import atomsandbots.android.honey.user.Registration.RegisterActivity;
 import atomsandbots.android.honey.user.databinding.ActivityIntroBinding;
 
 public class IntroActivity extends AppCompatActivity {
@@ -62,26 +55,33 @@ public class IntroActivity extends AppCompatActivity {
         }
 
         setContentView(v);
-        // hide the action bar
-//        getSupportActionBar().hide();
 
         btnAnim = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.button_animation);
 
 
-        // fill list screen
         final List<ScreenItem> mList = new ArrayList<>();
-        mList.add(new ScreenItem("Fresh Food", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit", R.drawable.profile_placeholder));
-        mList.add(new ScreenItem("Fast Delivery", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit", R.drawable.profile_placeholder));
-        mList.add(new ScreenItem("Easy Payment", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, consectetur  consectetur adipiscing elit", R.drawable.profile_placeholder));
+        mList.add(new ScreenItem("Welcome To Honey Co.",
+                "Welcome to Honey Co. the all-in-one Giveaway and Promotional platform." +
+                        " Honey Co. offers the simplest and easiest way to enter Giveaways or prize competitions. " +
+                        "We will always find the best Giveaways and deals for you and if it's not a deal, it's a Giveaway.Literally! "
+                , R.drawable.hello_image));
+        mList.add(new ScreenItem("You Win, We Deliver!",
+                "You Win, We deliver!" +
+                        " Don't forget keep your notifications on to stay up to date with our Giveaways and Events.",
+                R.drawable.delivery_image));
+        mList.add(new ScreenItem("Honey Explore",
+                " Also check our in App Explore Page to discover new trends and 'Rate or Hate' upcoming Giveaways. " +
+                        "Thank you for choosing us.",
+                R.drawable.notification_image));
 
-        // setup viewpager
+        //setup viewpager
         introViewPagerAdapter = new IntroViewPagerAdapter(this, mList);
         binding.screenViewpager.setAdapter(introViewPagerAdapter);
 
-        // setup tabLayout with viewpager
+        //setup tabLayout with viewpager
         binding.tabIndicator.setupWithViewPager(binding.screenViewpager);
 
-        //Net button to get next item on screen pager
+        //Next button to get next item on screen pager
         binding.btnNext.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v1) {
@@ -106,9 +106,11 @@ public class IntroActivity extends AppCompatActivity {
                     onLastScreen();
                 }
             }
+
             @Override
             public void onTabUnselected(TabLayout.Tab tab) {
             }
+
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
             }
@@ -125,6 +127,7 @@ public class IntroActivity extends AppCompatActivity {
                 // we could know that he is already checked the intro screen activity
                 // we are using shared preferences to that process
                 IntroActivity.this.savePrefsData();
+                //finish IntroActivity
                 IntroActivity.this.finish();
 
             }
@@ -139,39 +142,17 @@ public class IntroActivity extends AppCompatActivity {
         });
 
 
-
-        addSlide(AppIntroFragment.newInstance("1st intro",
-                "A description that will be shown on the bottom",
-                R.mipmap.ic_launcher,
-                getResources().getColor(R.color.primary_dark)));
-
-
-        addSlide(AppIntroFragment.newInstance("Second",
-                "A description that will be shown on the bottom",
-                R.mipmap.ic_launcher,
-                getResources().getColor(R.color.primary_dark)));
-
-        addSlide(AppIntroFragment.newInstance("Three",
-                "A description that will be shown on the bottom",
-                R.mipmap.ic_launcher,
-                getResources().getColor(R.color.primary_dark)));
-
-        addSlide(AppIntroFragment.newInstance("Fourth",
-                "A description that will be shown on the bottom",
-                R.mipmap.ic_launcher,
-                getResources().getColor(R.color.primary_dark)));
-
     }
 
     private boolean restorePrefData() {
         //check to see is user has opened app before
-        SharedPreferences pref = getApplicationContext().getSharedPreferences(firebaseUser.getUid()+"myPrefs", MODE_PRIVATE);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences(firebaseUser.getUid() + "myPrefs", MODE_PRIVATE);
         return pref.getBoolean("isIntroOpened", false);
     }
 
     private void savePrefsData() {
 
-        SharedPreferences pref = getApplicationContext().getSharedPreferences(firebaseUser.getUid()+"myPrefs", MODE_PRIVATE);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences(firebaseUser.getUid() + "myPrefs", MODE_PRIVATE);
         SharedPreferences.Editor editor = pref.edit();
         editor.putBoolean("isIntroOpened", true);
         editor.apply();
@@ -188,15 +169,6 @@ public class IntroActivity extends AppCompatActivity {
         // setup animation
         binding.btnGetStarted.setAnimation(btnAnim);
 
-     /*TODO this needs to activated once the user is authenticated.
-     *  Also, i have a suggestion regarding payments, what do you think about a different way of payment (Paypal etc.)?.
-     *  I can pay you for this on-going gig separately and only one fee applies for both of us,
-     *  right now Fiverr taking a transaction fee from you and me. Email me at stanleymanoah@gmail.com if you'd rather do that. */
-
-    private void MoveNext() {
-        Intent intent = new Intent(IntroActivity.this, RegisterActivity.class);
-        startActivity(intent);
-        finish();
-
     }
+
 }

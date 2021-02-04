@@ -113,6 +113,8 @@ LoginActivity extends AppCompatActivity {
         GoogleSignIn();
     }
 
+
+    //user clicks admin and wants to return to user Login-interface
     private void textAdminNotClickFun() {
         binding.textForgotPassword.setVisibility(View.VISIBLE);
         binding.textAdmin.setVisibility(View.VISIBLE);
@@ -120,6 +122,8 @@ LoginActivity extends AppCompatActivity {
         binding.googleSignIn.setVisibility(View.VISIBLE);
     }
 
+
+    //If user is admin
     private void textAdminClickFun() {
         binding.textForgotPassword.setVisibility(View.INVISIBLE);
         binding.textAdmin.setVisibility(View.INVISIBLE);
@@ -134,11 +138,13 @@ LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
         if (binding.textAdmin.getVisibility() == View.VISIBLE) {
+            //validate by Google Authentication
             if (Validation()) {
                 mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            //check if email is already verified
                             checkIfEmailVerified();
                         } else {
                             Toast.makeText(LoginActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
@@ -151,6 +157,7 @@ LoginActivity extends AppCompatActivity {
                 progressDialog.dismiss();
             }
         } else {
+            //validate email/password login
             if (Validation()) {
                 // check if email is from admin or users
                 DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Admin");
@@ -217,7 +224,7 @@ LoginActivity extends AppCompatActivity {
         };
         spannableString.setSpan(clickableSpan, text1.length(), text1.length() + text2.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         binding.textSignUp.setText(spannableString);
-        binding.textSignUp.setLinkTextColor(Color.parseColor(getString(R.string.have_or_not_have_account_txtcolor)));
+        binding.textSignUp.setLinkTextColor(Color.parseColor(getString(R.string.have_or_not_have_account_textColor)));
         binding.textSignUp.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
@@ -330,7 +337,7 @@ LoginActivity extends AppCompatActivity {
                         if (id < 0) {
                             Toast.makeText(LoginActivity.this, "Data was not saved", Toast.LENGTH_SHORT).show();
                         } else {
-                            Toast.makeText(LoginActivity.this, "Successfully saved", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, "live!", Toast.LENGTH_SHORT).show();
                         }
                         updateUI(user);
                     } else {
@@ -378,6 +385,7 @@ LoginActivity extends AppCompatActivity {
     private void checkIfEmailVerified() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        assert user != null;
         if (user.isEmailVerified())
         {
             SharedPreferences preferences = getApplicationContext().getSharedPreferences("LoginDetails", MODE_PRIVATE);

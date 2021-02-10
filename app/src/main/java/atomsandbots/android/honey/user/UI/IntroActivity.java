@@ -62,7 +62,7 @@ public class IntroActivity extends AppCompatActivity {
         final List<ScreenItem> mList = new ArrayList<>();
         mList.add(new ScreenItem("Welcome To Honey Co.",
                 "Welcome to Honey Co. the all-in-one Giveaway and Promotional platform." +
-                        " Honey Co. offers the simplest and easiest way to enter Giveaways or prize competitions. " +
+                        " Honey Co. offers the simplest and easiest way to enter Giveaways or Prize Competitions. " +
                         "We will always find the best Giveaways and deals for you and if it's not a deal, it's a Giveaway.Literally! "
                 , R.drawable.hello_image));
         mList.add(new ScreenItem("You Win, We Deliver!",

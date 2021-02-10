@@ -1,5 +1,6 @@
 package atomsandbots.android.honey.user.UI;
 
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -8,6 +9,7 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_draws, R.id.nav_profile, R.id.nav_rate, R.id.nav_setting)
+                R.id.nav_home, R.id.nav_draws, R.id.nav_profile, R.id.nav_rate, R.id.nav_setting, R.id.nav_privacy_policy)
                 .setOpenableLayout(drawer)
                 .build();
         final NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -102,6 +104,12 @@ public class MainActivity extends AppCompatActivity {
                     navController.popBackStack(R.id.nav_home, false);
                     navController.navigate(R.id.nav_about);
 
+                } else if (menuItem.getItemId() == R.id.nav_rate) {
+                    //rateMe();
+                } else if (menuItem.getItemId() == R.id.nav_privacy_policy) {
+                    //PP's fragment
+                    navController.popBackStack(R.id.nav_home, false);
+                    navController.navigate(R.id.nav_privacy_policy);
                 }
                 return true;
             }
@@ -209,5 +217,16 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
         return NavigationUI.navigateUp(navController, mAppBarConfiguration)
                 || super.onSupportNavigateUp();
+    }
+
+
+    private void rateMe() {
+        try {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("market://details?id=" + this.getPackageName())));
+        } catch (ActivityNotFoundException e) {
+            startActivity(new Intent(Intent.ACTION_VIEW,
+                    Uri.parse("http://play.google.com/store/apps/details?id=" + this.getPackageName())));
+        }
     }
 }

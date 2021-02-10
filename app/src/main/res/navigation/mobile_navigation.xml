@@ -39,4 +39,10 @@
         android:label="@string/about"
         tools:layout="@layout/fragment_about" />
 
+    <fragment
+        android:id="@+id/nav_privacy_policy"
+        android:name="atomsandbots.android.honey.user.UI.PrivacyPolicyFragment"
+        android:label="@string/about"
+        tools:layout="@layout/fragment_privacy_policy" />
+
 </navigation>

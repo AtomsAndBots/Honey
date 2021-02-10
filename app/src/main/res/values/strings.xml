@@ -120,5 +120,18 @@
     <string name="skip_intro_ui">skip</string>
     <string name="intro_layout_iv">intro layout iv</string>
     <string name="textview">TextView</string>
+    <string name="rate_app">Rate App</string>
+    <string name="version">\"Version \"</string>
+    <string name="feedback">Feedback</string>
+    <string name="version_xml">Version</string>
+    <string name="pp_image">TODO</string>
+    <string name="right_arrow">right arrow</string>
+    <string name="terms_and_conditions">Terms And Conditions</string>
+    <string name="right_arrow_two">right arrow two</string>
+    <string name="t_s_and_c_s_icon">T\'s and C\'s icon</string>
+    <string name="privacy_policy">Privacy Policy</string>
+    <string name="right_arrow_one">right arrow one</string>
+    <string name="privacy_policy_image">privacy policy image</string>
+    <string name="honey_logo_pp">Honey logo pp</string>
 
 </resources>

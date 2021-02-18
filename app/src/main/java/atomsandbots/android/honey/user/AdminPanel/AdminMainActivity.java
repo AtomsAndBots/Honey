@@ -39,19 +39,17 @@ public class AdminMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_main);
 
-    // Toolbar
+        // Toolbar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Admin Panel");
-
-
 
 
         final RecyclerView adminRecyclerView = findViewById(R.id.admin_recyclerview);
         //firebase instance for products
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products");
         final List<ProductModel> productModelList = new ArrayList<>();
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(AdminMainActivity.this,2);
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(AdminMainActivity.this, 2);
         adminRecyclerView.setLayoutManager(gridLayoutManager);
         int spanCount = 2; // 3 columns
         int spacing = 15; // 50px
@@ -65,11 +63,11 @@ public class AdminMainActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 productModelList.clear();
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
+                for (DataSnapshot snapshot1 : snapshot.getChildren()) {
                     ProductModel product = snapshot1.getValue(ProductModel.class);
                     productModelList.add(product);
                 }
-                HomeAdapter homeAdapter = new HomeAdapter(productModelList,AdminMainActivity.this,true,true,false);
+                HomeAdapter homeAdapter = new HomeAdapter(productModelList, AdminMainActivity.this, true, true, false);
                 adminRecyclerView.setAdapter(homeAdapter);
                 homeAdapter.notifyDataSetChanged();
 
@@ -92,22 +90,28 @@ public class AdminMainActivity extends AppCompatActivity {
     }
 
     private void AddNewProduct() {
-        startActivity(new Intent(AdminMainActivity.this,NewProductActivity.class));
+        startActivity(new Intent(AdminMainActivity.this, NewProductActivity.class));
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.admin_menu,menu);
+        getMenuInflater().inflate(R.menu.admin_menu, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        if (item.getItemId() == R.id.logout_admin){
-           LogOutAdmin();
+        if (item.getItemId() == R.id.logout_admin) {
+            LogOutAdmin();
         }
         return false;
     }
+
+    @Override
+    public void onBackPressed() {
+        LogOutAdmin();
+    }
+
 
     private void LogOutAdmin() {
         AlertDialog.Builder logoutDialog = new AlertDialog.Builder(AdminMainActivity.this);
@@ -116,16 +120,16 @@ public class AdminMainActivity extends AppCompatActivity {
                 .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-                        SharedPreferences preferences = getApplicationContext().getSharedPreferences("LoginDetails",MODE_PRIVATE);
+                        SharedPreferences preferences = getApplicationContext().getSharedPreferences("LoginDetails", MODE_PRIVATE);
                         SharedPreferences.Editor editor = preferences.edit();
-                        editor.putBoolean("isLogin",false);
+                        editor.putBoolean("isLogin", false);
                         editor.apply();
                         FirebaseAuth.getInstance().signOut();
                         startActivity(new Intent(AdminMainActivity.this, RegisterActivity.class));
                         finish();
                     }
                 })
-                .setNegativeButton("No",null)
+                .setNegativeButton("No", null)
                 .show();
     }
 }

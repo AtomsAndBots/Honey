@@ -35,6 +35,7 @@ import java.util.HashMap;
 import atomsandbots.android.honey.user.R;
 
 public class NewProductActivity extends AppCompatActivity {
+
     private ImageView productImage;
     private EditText Name, Price, Description, ID;
     private String name, price, description, id, category;
@@ -46,7 +47,6 @@ public class NewProductActivity extends AppCompatActivity {
     private StorageReference mStorageRef;
     private Uri imageUri;
     private StorageTask uploadTask;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,7 +103,7 @@ public class NewProductActivity extends AppCompatActivity {
 
     private void openImage() {
         Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-        startActivityForResult(Intent.createChooser(intent,"Select any Image"),IMG_REQ);
+        startActivityForResult(Intent.createChooser(intent, "Select any Image"), IMG_REQ);
     }
 
     private String getFileExtension(Uri uri) {
@@ -122,7 +122,7 @@ public class NewProductActivity extends AppCompatActivity {
     }
 
     private void uploadProduct() {
-        if (Validation()){
+        if (Validation()) {
 
             final ProgressDialog pd = new ProgressDialog(NewProductActivity.this);
             pd.setMessage("Uploading");
@@ -149,11 +149,11 @@ public class NewProductActivity extends AppCompatActivity {
                             databaseReference = FirebaseDatabase.getInstance().getReference("Products").child(ID.getText().toString().trim());
                             HashMap<String, Object> hashMap = new HashMap<>();
                             hashMap.put("Image", mUri);
-                            hashMap.put("ProductName",name );
-                            hashMap.put("Description",description );
-                            hashMap.put("Price",price );
-                            hashMap.put("Category",category );
-                            hashMap.put("ProductId",id );
+                            hashMap.put("ProductName", name);
+                            hashMap.put("Description", description);
+                            hashMap.put("Price", price);
+                            hashMap.put("Category", category);
+                            hashMap.put("ProductId", id);
                             databaseReference.setValue(hashMap);
                             Toast.makeText(NewProductActivity.this, "Upload successfully", Toast.LENGTH_SHORT).show();
                             pd.dismiss();
@@ -184,7 +184,7 @@ public class NewProductActivity extends AppCompatActivity {
         id = ID.getText().toString().trim();
         price = Price.getText().toString().trim();
         description = Description.getText().toString().trim();
-        if (imageUri == null){
+        if (imageUri == null) {
             Toast.makeText(this, "No Image is selected", Toast.LENGTH_SHORT).show();
         }
         if (name.isEmpty()) {
@@ -213,4 +213,15 @@ public class NewProductActivity extends AppCompatActivity {
         }
         return valid;
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+    }
+
 }

@@ -16,9 +16,11 @@ import atomsandbots.android.honey.user.UI.MainActivity;
 import atomsandbots.android.honey.user.databinding.ActivityRegisterBinding;
 
 public class RegisterActivity extends AppCompatActivity {
+
     private FirebaseAuth mAuth;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //set App theme for splash screen
         setTheme(R.style.AppTheme);
         super.onCreate(savedInstanceState);
         atomsandbots.android.honey.user.databinding.ActivityRegisterBinding binding

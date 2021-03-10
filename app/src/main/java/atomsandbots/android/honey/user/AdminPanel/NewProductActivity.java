@@ -37,7 +37,7 @@ import atomsandbots.android.honey.user.R;
 public class NewProductActivity extends AppCompatActivity {
 
     private ImageView productImage;
-    private EditText Name, Price, Description, ID;
+    private EditText Name, Price, Description, ID, sponsored;
     private String name, price, description, id, category;
     private Spinner Category;
     private Button addProduct;
@@ -91,6 +91,7 @@ public class NewProductActivity extends AppCompatActivity {
         Description = findViewById(R.id.productDescription);
         Category = findViewById(R.id.product_category);
         ID = findViewById(R.id.productID);
+        sponsored = findViewById(R.id.sponsored);
     }
 
     private void AddProduct() {
@@ -154,6 +155,8 @@ public class NewProductActivity extends AppCompatActivity {
                             hashMap.put("Price", price);
                             hashMap.put("Category", category);
                             hashMap.put("ProductId", id);
+                            //TODO I failed to add this hashmap properly can you fix it please
+                            hashMap.put("Sponsored", sponsored);
                             databaseReference.setValue(hashMap);
                             Toast.makeText(NewProductActivity.this, "Upload successfully", Toast.LENGTH_SHORT).show();
                             pd.dismiss();
@@ -184,6 +187,7 @@ public class NewProductActivity extends AppCompatActivity {
         id = ID.getText().toString().trim();
         price = Price.getText().toString().trim();
         description = Description.getText().toString().trim();
+
         if (imageUri == null) {
             Toast.makeText(this, "No Image is selected", Toast.LENGTH_SHORT).show();
         }
@@ -207,6 +211,7 @@ public class NewProductActivity extends AppCompatActivity {
             Description.setError("missing");
             valid = false;
         }
+
         if (category.equalsIgnoreCase("Select")) {
             valid = false;
             Toast.makeText(this, "Please select a category for product", Toast.LENGTH_SHORT).show();

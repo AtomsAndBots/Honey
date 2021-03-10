@@ -3,18 +3,19 @@ package atomsandbots.android.honey.user.Model;
 import java.io.Serializable;
 
 public class ProductModel implements Serializable {
-    private String ProductName, Description, Price, Category, ProductId,Image;
+    private String ProductName, Description, Price, Category, ProductId,Image, Type;
 
     public ProductModel() {
     }
 
-    public ProductModel(String productName, String description, String price, String category, String productId, String image) {
+    public ProductModel(String productName, String description, String price, String category, String productId, String image, String type) {
         ProductName = productName;
         Description = description;
         Price = price;
         Category = category;
         ProductId = productId;
         Image = image;
+        Type = type;
     }
 
     public String getProductName() {
@@ -63,5 +64,13 @@ public class ProductModel implements Serializable {
 
     public void setImage(String image) {
         Image = image;
+    }
+
+    public String getType() {
+        return Type;
+    }
+
+    public void setType(String type) {
+        Type = type;
     }
 }

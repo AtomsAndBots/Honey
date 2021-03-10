@@ -25,14 +25,17 @@
             app:popupTheme="@style/AppTheme.PopupOverlay" />
     </com.google.android.material.appbar.AppBarLayout>
 
+
     <ScrollView
         android:id="@+id/scrollView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="600dp"
         app:layout_constraintBottom_toTopOf="@+id/enterInDraw"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2">
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout2"
+        app:layout_constraintVertical_bias="0.0">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
@@ -40,14 +43,16 @@
 
             <ImageView
                 android:id="@+id/product_image"
-                android:layout_width="match_parent"
+                android:layout_width="400dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="8dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.454"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
+                tools:ignore="ContentDescription"
+                tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
                 android:id="@+id/product_title"
@@ -88,6 +93,7 @@
                     android:layout_marginLeft="4dp"
                     android:textSize="14sp" />
 
+
             </LinearLayout>
 
             <TextView
@@ -99,7 +105,7 @@
                 android:paddingTop="10dp"
                 android:text="@string/description"
                 android:textColor="@color/primary_text"
-                android:textSize="14sp"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/linearLayout_Price" />
 
@@ -109,37 +115,41 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginLeft="8dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:textSize="12sp"
+                android:fontFamily="@font/roboto_light"
+                android:textSize="13sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/des" />
+                app:layout_constraintTop_toBottomOf="@+id/des"
+                tools:text="@string/about_body_one" />
+
 
             <LinearLayout
                 android:id="@+id/likesLayout"
                 android:layout_width="0dp"
-                android:visibility="gone"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/product_image"
-                android:baselineAligned="false">
+                app:layout_constraintTop_toBottomOf="@+id/product_image">
 
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/likeBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/like_btn_image"
                         android:src="@drawable/like"
-                        android:tag="like"
-                        android:contentDescription="@string/like_btn_image" />
+                        android:tag="like" />
 
                     <TextView
                         android:id="@+id/likeTxt"
@@ -151,18 +161,18 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_weight="1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_weight="1"
                     android:orientation="vertical">
 
                     <ImageButton
                         android:id="@+id/dislikeBtn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:contentDescription="@string/dislike_image_view"
                         android:src="@drawable/dislike"
-                        android:tag="dislike"
-                        android:contentDescription="@string/dislike_image_view" />
+                        android:tag="dislike" />
 
                     <TextView
                         android:id="@+id/dislikeTxt"
@@ -175,10 +185,32 @@
 
             </LinearLayout>
 
+
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </ScrollView>
+
+    <Button
+        android:id="@+id/goToWebsite"
+        android:layout_width="250dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="212dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:layout_marginBottom="200dp"
+        android:background="@drawable/website_button_design"
+        android:stateListAnimator="@null"
+        android:text="@string/go_to_website"
+        android:textColor="@android:color/white"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/enterInDraw"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="UnusedAttribute" />
 
 
     <Button

@@ -31,7 +31,7 @@ import atomsandbots.android.honey.user.R;
 
 //Used to be 'rate or hate' fragment
 public class ExploreFragment extends Fragment {
-    private RecyclerView rateRecyclerView;
+    private RecyclerView exploreRecyclerView;
 
     private List<ProductModel> productModelList;
     private ProgressDialog progressDialog;
@@ -42,7 +42,6 @@ public class ExploreFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View root = inflater.inflate(R.layout.fragment_explore, container, false);
-
 
 
         // check internet connection
@@ -56,19 +55,19 @@ public class ExploreFragment extends Fragment {
             progressDialog.setMessage("Please Wait");
             progressDialog.show();
 
-            rateRecyclerView = root.findViewById(R.id.rate_recyclerView);
+            exploreRecyclerView = root.findViewById(R.id.explore_recyclerView);
             productModelList = new ArrayList<>();
 
             // create spacing between recyclerview item
             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-            rateRecyclerView.setLayoutManager(gridLayoutManager);
+            exploreRecyclerView.setLayoutManager(gridLayoutManager);
             int spanCount = 2; // 3 columns
             int spacing = 15; // 50px
             boolean includeEdge = false;
-            rateRecyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, false));
-            rateRecyclerView.setHasFixedSize(true);
-            rateRecyclerView.setItemViewCacheSize(20);
-            rateRecyclerView.setDrawingCacheEnabled(true);
+            exploreRecyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, false));
+            exploreRecyclerView.setHasFixedSize(true);
+            exploreRecyclerView.setItemViewCacheSize(20);
+            exploreRecyclerView.setDrawingCacheEnabled(true);
 
             //Get firebase products instance
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products");
@@ -81,7 +80,7 @@ public class ExploreFragment extends Fragment {
                         productModelList.add(product);
                     }
                     HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, false, true);
-                    rateRecyclerView.setAdapter(homeAdapter);
+                    exploreRecyclerView.setAdapter(homeAdapter);
                     progressDialog.dismiss();
                     homeAdapter.notifyDataSetChanged();
                 }

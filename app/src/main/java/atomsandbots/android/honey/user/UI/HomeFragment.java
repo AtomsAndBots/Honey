@@ -60,9 +60,9 @@ public class HomeFragment extends Fragment {
             homeRecyclerView = root.findViewById(R.id.home_recyclerview);
 
             productModelList = new ArrayList<>();
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 1);
             homeRecyclerView.setLayoutManager(gridLayoutManager);
-            int spanCount = 2; // 3 columns
+            int spanCount = 1; // 3 columns
             int spacing = 15; // 50px
             boolean includeEdge = false;
             homeRecyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, false));

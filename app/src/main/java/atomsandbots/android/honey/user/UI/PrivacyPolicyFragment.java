@@ -18,7 +18,6 @@ import atomsandbots.android.honey.user.databinding.FragmentPrivacyPolicyBinding;
 
 public class PrivacyPolicyFragment extends Fragment {
 
-
     private FragmentPrivacyPolicyBinding binding;
 
     @Nullable
@@ -39,8 +38,8 @@ public class PrivacyPolicyFragment extends Fragment {
         binding.privacyCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // link to your privacy policy (to be added)
-                String url = "";
+                // link to privacy policy
+                String url = "https://www.honeycollabs.com/privacy-policy";
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);
@@ -52,8 +51,8 @@ public class PrivacyPolicyFragment extends Fragment {
         binding.termsCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // link to terms and conditions
-                String url = "https://embersoft.ru/en/Terms-and-Conditions-Coffee-Space-Android/";
+                // link to terms of use
+                String url = "https://www.honeycollabs.com/terms-of-use";
                 Intent intent = new Intent();
                 intent.setAction(Intent.ACTION_VIEW);
                 intent.addCategory(Intent.CATEGORY_BROWSABLE);

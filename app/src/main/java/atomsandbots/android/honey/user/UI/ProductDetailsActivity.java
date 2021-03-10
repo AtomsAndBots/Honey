@@ -48,6 +48,8 @@ public class ProductDetailsActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        //Initialize FirebaseAuth to get current user
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         assert user != null;
         reference = FirebaseDatabase.getInstance().getReference("Draws").child(user.getUid());
@@ -71,7 +73,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.exists()) {
                     bind.enterInDraw.setText("Withdraw");
-                }else if (isDraw){
+                } else if (isDraw) {
                     //set button to invisible when Your Giveaways fragment is true
                     bind.enterInDraw.setVisibility(View.GONE);
                 }
@@ -88,7 +90,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         bind.enterInDraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (bind.enterInDraw.getText().toString().equalsIgnoreCase("Withdraw")){
+                if (bind.enterInDraw.getText().toString().equalsIgnoreCase("Withdraw")) {
                     RemoveWithdraw(product.getProductId());
                 } else {
                     EnterInDraw(product);

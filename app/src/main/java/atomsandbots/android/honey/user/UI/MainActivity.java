@@ -57,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         toolbar.setBackgroundResource(R.drawable.toolbar_design);
         setSupportActionBar(toolbar);
+        toolbar.setTitleTextColor(getResources().getColor(R.color.primary_dark));
 
 
         ConnectivityManager conMgr = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -105,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
                     navController.navigate(R.id.nav_about);
 
                 } else if (menuItem.getItemId() == R.id.nav_rate) {
+                    //TODO configure this before release
                     //rateMe();
                 } else if (menuItem.getItemId() == R.id.nav_privacy_policy) {
                     //PP's fragment

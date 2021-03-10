@@ -75,9 +75,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         String name = productModelList.get(position).getProductName();
         String cat = productModelList.get(position).getCategory();
         String price = productModelList.get(position).getPrice();
+        String type = productModelList.get(position).getType();
+
 
         //set data to item
-        holder.setData(image, name, cat, price);
+        holder.setData(image, name, cat, price,type);
 
         //Go to product details activity
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -172,7 +174,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView Image;
-        private final TextView Name, Category, Price;
+        private final TextView Name, Category, Price, Type;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -180,12 +182,14 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
             Name = itemView.findViewById(R.id.product_name);
             Category = itemView.findViewById(R.id.product_category);
             Price = itemView.findViewById(R.id.product_price);
+            Type = itemView.findViewById(R.id.product_type);
         }
 
-        public void setData(String image, String name, String cat, String price) {
+        public void setData(String image, String name, String cat, String price,String type) {
             Glide.with(context).load(image).placeholder(R.drawable.profile_placeholder).into(Image);
             Name.setText(name);
             Category.setText(cat);
+            Type.setText(type);
             Price.setText(String.format("$%s", price));
         }
     }

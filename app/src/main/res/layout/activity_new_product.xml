@@ -111,6 +111,22 @@
                 android:padding="4dp"
                 tools:ignore="Autofill,LabelFor" />
 
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Sponsored or by Honey?" />
+
+            <EditText
+                android:id="@+id/sponsored"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:ems="10"
+                android:inputType="textPersonName"
+                android:padding="4dp"
+                tools:ignore="Autofill,LabelFor" />
+
         </LinearLayout>
     </ScrollView>
 

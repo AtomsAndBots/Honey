@@ -208,12 +208,12 @@ public class SignUpActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode != RESULT_CANCELED) {
+        if (resultCode != RESULT_CANCELED) {
             if (requestCode == RC_SIGN_IN) {
                 Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
                 handleSignInResult(task);
             }
-        }else {
+        } else {
             Toast.makeText(this, "Something went wrong", Toast.LENGTH_SHORT).show();
             pd.dismiss();
         }
@@ -305,6 +305,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void sendVerificationEmail() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
+        assert user != null;
         user.sendEmailVerification()
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override
@@ -348,9 +349,7 @@ public class SignUpActivity extends AppCompatActivity {
 
                             // after email is sent just logout the user and finish this activity
                             //     finish();
-                        }
-                        else
-                        {
+                        } else {
                             // email not sent, so display message and restart the activity or do whatever you wish to do
                             //restart this activity
                             overridePendingTransition(0, 0);

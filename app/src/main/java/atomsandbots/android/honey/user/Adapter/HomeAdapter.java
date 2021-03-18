@@ -36,16 +36,18 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     private final boolean isProductLayout;
     private final boolean isAdmin;
     private final boolean isRate;
+    private final boolean isExplore;
     private final List<ProductModel> productModelList;
     private final Context context;
 
    //Check layout to display correct data accordingly
-    public HomeAdapter(List<ProductModel> productModelList, Context context, boolean isProductLayout, boolean isAdmin,boolean isRate) {
+    public HomeAdapter(List<ProductModel> productModelList, Context context, boolean isProductLayout, boolean isExplore, boolean isAdmin,boolean isRate) {
         this.productModelList = productModelList;
         this.context = context;
         this.isProductLayout = isProductLayout;
         this.isAdmin = isAdmin;
         this.isRate = isRate;
+        this.isExplore = isExplore;
     }
 
     @NonNull
@@ -62,7 +64,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     // Check to see which layout is true on getItemViewType
     @Override
     public int getItemViewType(int position) {
-        if (isProductLayout) {
+        if (isExplore) {
             return productLayout;
         } else {
             return drawLayout;

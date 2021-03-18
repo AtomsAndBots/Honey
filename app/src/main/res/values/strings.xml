@@ -133,5 +133,6 @@
     <string name="right_arrow_one">right arrow one</string>
     <string name="privacy_policy_image">privacy policy image</string>
     <string name="honey_logo_pp">Honey logo pp</string>
+    <string name="product_url">Website URL</string>
 
 </resources>

@@ -69,7 +69,7 @@ public class AdminMainActivity extends AppCompatActivity {
                     ProductModel product = snapshot1.getValue(ProductModel.class);
                     productModelList.add(product);
                 }
-                HomeAdapter homeAdapter = new HomeAdapter(productModelList,AdminMainActivity.this,true,true,false);
+                HomeAdapter homeAdapter = new HomeAdapter(productModelList,AdminMainActivity.this,true,true,true,false);
                 adminRecyclerView.setAdapter(homeAdapter);
                 homeAdapter.notifyDataSetChanged();
 

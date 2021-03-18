@@ -156,7 +156,7 @@ LoginActivity extends AppCompatActivity {
             //validate email/password login
             if (Validation()) {
                 // check if email is from admin or users
-                String adminEmail = "honeycollaboration@gmail.com";
+                String adminEmail = "honeycollaborations@gmail.com";
                 if (email.equalsIgnoreCase(adminEmail)) {
                     mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override

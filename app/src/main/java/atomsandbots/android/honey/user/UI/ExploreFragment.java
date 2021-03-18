@@ -80,7 +80,7 @@ public class ExploreFragment extends Fragment {
                         ProductModel product = snapshot1.getValue(ProductModel.class);
                         productModelList.add(product);
                     }
-                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, false, true);
+                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, true,false, true);
                     rateRecyclerView.setAdapter(homeAdapter);
                     progressDialog.dismiss();
                     homeAdapter.notifyDataSetChanged();

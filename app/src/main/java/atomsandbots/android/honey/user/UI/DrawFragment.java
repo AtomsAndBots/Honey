@@ -97,7 +97,7 @@ public class DrawFragment extends Fragment {
                         productModelList.add(product);
                     }
                     //Reuse Home Adapter
-                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), false, false,false);
+                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), false, false,false,false);
                     drawRecyclerView.setAdapter(homeAdapter);
                     homeAdapter.notifyDataSetChanged();
                 }

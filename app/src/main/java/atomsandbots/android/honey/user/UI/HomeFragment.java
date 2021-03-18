@@ -17,6 +17,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -60,7 +61,12 @@ public class HomeFragment extends Fragment {
             homeRecyclerView = root.findViewById(R.id.home_recyclerview);
 
             productModelList = new ArrayList<>();
-            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+            homeRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+            homeRecyclerView.setHasFixedSize(true);
+            homeRecyclerView.setItemViewCacheSize(20);
+            homeRecyclerView.setDrawingCacheEnabled(true);
+
+    /*        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
             homeRecyclerView.setLayoutManager(gridLayoutManager);
             int spanCount = 2; // 3 columns
             int spacing = 15; // 50px
@@ -69,6 +75,8 @@ public class HomeFragment extends Fragment {
             homeRecyclerView.setHasFixedSize(true);
             homeRecyclerView.setItemViewCacheSize(20);
             homeRecyclerView.setDrawingCacheEnabled(true);
+
+     */
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products");
             reference.addValueEventListener(new ValueEventListener() {
                 @Override
@@ -78,7 +86,7 @@ public class HomeFragment extends Fragment {
                         ProductModel product = snapshot1.getValue(ProductModel.class);
                         productModelList.add(product);
                     }
-                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, false, false);
+                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true,false, false, false);
                     homeRecyclerView.setAdapter(homeAdapter);
                     progressDialog.dismiss();
                     homeAdapter.notifyDataSetChanged();

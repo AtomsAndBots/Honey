@@ -3,18 +3,37 @@ package atomsandbots.android.honey.user.Model;
 import java.io.Serializable;
 
 public class ProductModel implements Serializable {
-    private String ProductName, Description, Price, Category, ProductId,Image;
+    private String ProductName, Description, Price, Category, ProductId,Image,URL;
+    private boolean Sponcered;
 
     public ProductModel() {
     }
 
-    public ProductModel(String productName, String description, String price, String category, String productId, String image) {
+    public ProductModel(String productName, String description, String price, String category, String productId, String image, String URL, boolean sponcered) {
         ProductName = productName;
         Description = description;
         Price = price;
         Category = category;
         ProductId = productId;
         Image = image;
+        this.URL = URL;
+        Sponcered = sponcered;
+    }
+
+    public String getURL() {
+        return URL;
+    }
+
+    public void setURL(String URL) {
+        this.URL = URL;
+    }
+
+    public boolean isSponcered() {
+        return Sponcered;
+    }
+
+    public void setSponcered(boolean sponcered) {
+        Sponcered = sponcered;
     }
 
     public String getProductName() {

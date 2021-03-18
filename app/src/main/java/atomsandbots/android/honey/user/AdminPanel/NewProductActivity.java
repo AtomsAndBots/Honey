@@ -13,6 +13,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -36,8 +37,10 @@ import atomsandbots.android.honey.user.R;
 
 public class NewProductActivity extends AppCompatActivity {
     private ImageView productImage;
-    private EditText Name, Price, Description, ID;
-    private String name, price, description, id, category;
+    private EditText Name, Price, Description, ID,URL;
+    private String name, price, description, id, category,url;
+    private boolean sponcered;
+    private Switch Sponcered;
     private Spinner Category;
     private Button addProduct;
 
@@ -91,6 +94,8 @@ public class NewProductActivity extends AppCompatActivity {
         Description = findViewById(R.id.productDescription);
         Category = findViewById(R.id.product_category);
         ID = findViewById(R.id.productID);
+        URL = findViewById(R.id.product_url);
+        Sponcered = findViewById(R.id.product_sponcered);
     }
 
     private void AddProduct() {
@@ -154,6 +159,8 @@ public class NewProductActivity extends AppCompatActivity {
                             hashMap.put("Price",price );
                             hashMap.put("Category",category );
                             hashMap.put("ProductId",id );
+                            hashMap.put("URL",url );
+                            hashMap.put("Sponcered",sponcered);
                             databaseReference.setValue(hashMap);
                             Toast.makeText(NewProductActivity.this, "Upload successfully", Toast.LENGTH_SHORT).show();
                             pd.dismiss();
@@ -184,6 +191,8 @@ public class NewProductActivity extends AppCompatActivity {
         id = ID.getText().toString().trim();
         price = Price.getText().toString().trim();
         description = Description.getText().toString().trim();
+        url = URL.getText().toString().trim();
+        sponcered = Sponcered.isChecked();
         if (imageUri == null){
             Toast.makeText(this, "No Image is selected", Toast.LENGTH_SHORT).show();
         }

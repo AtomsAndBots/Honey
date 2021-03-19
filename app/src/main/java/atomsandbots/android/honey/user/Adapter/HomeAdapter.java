@@ -55,7 +55,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public HomeAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view;
         if (viewType == productLayout) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_layout, parent, false);
+            if (isAdmin) {
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.product_item_layout, parent, false);
+            }else {
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.exp_item, parent, false);
+            }
         } else {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.draw_item_layout, parent, false);
         }

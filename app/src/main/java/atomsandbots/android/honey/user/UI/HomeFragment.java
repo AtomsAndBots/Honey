@@ -34,6 +34,8 @@ import atomsandbots.android.honey.user.Extras.GridSpacingItemDecoration;
 import atomsandbots.android.honey.user.Model.ProductModel;
 import atomsandbots.android.honey.user.R;
 
+// Simply change Product layout of item to pre Explore layout
+
 public class HomeFragment extends Fragment {
 
     private RecyclerView homeRecyclerView;
@@ -65,18 +67,6 @@ public class HomeFragment extends Fragment {
             homeRecyclerView.setHasFixedSize(true);
             homeRecyclerView.setItemViewCacheSize(20);
             homeRecyclerView.setDrawingCacheEnabled(true);
-
-    /*        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-            homeRecyclerView.setLayoutManager(gridLayoutManager);
-            int spanCount = 2; // 3 columns
-            int spacing = 15; // 50px
-            boolean includeEdge = false;
-            homeRecyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, false));
-            homeRecyclerView.setHasFixedSize(true);
-            homeRecyclerView.setItemViewCacheSize(20);
-            homeRecyclerView.setDrawingCacheEnabled(true);
-
-     */
             DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Products");
             reference.addValueEventListener(new ValueEventListener() {
                 @Override

@@ -2,6 +2,8 @@ package atomsandbots.android.honey.user.Model;
 
 import java.util.List;
 
+// Model Class for Exp. Adapter
+
 public class ExpModel {
     private String Tittle;
     private List<ProductModel> productModels;

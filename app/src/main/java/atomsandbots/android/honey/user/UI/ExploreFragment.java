@@ -65,18 +65,8 @@ public class ExploreFragment extends Fragment {
             rateRecyclerView = root.findViewById(R.id.rate_recyclerView);
             productModelList = new ArrayList<>();
 
-            // create spacing between recyclerview item
-/*            GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
-            rateRecyclerView.setLayoutManager(gridLayoutManager);
-            int spanCount = 2; // 3 columns
-            int spacing = 15; // 50px
-            boolean includeEdge = false;
-            rateRecyclerView.addItemDecoration(new GridSpacingItemDecoration(spanCount, spacing, false));
-            rateRecyclerView.setHasFixedSize(true);
-            rateRecyclerView.setItemViewCacheSize(20);
-            rateRecyclerView.setDrawingCacheEnabled(true);
+        // Vertical RecyclerView with Multiple Horizontal RecyclerViews
 
- */
             rateRecyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
             rateRecyclerView.setHasFixedSize(true);
             rateRecyclerView.setItemViewCacheSize(20);
@@ -92,6 +82,9 @@ public class ExploreFragment extends Fragment {
                         ProductModel product = snapshot1.getValue(ProductModel.class);
                         productModelList.add(product);
                     }
+
+                    // Code to Collect All Categories of Products in List
+
                     if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
                         List<String> catList = productModelList.stream().map(ProductModel::getCategory).collect(Collectors.toList());
                         HashSet<String> hashSet = new HashSet<String>();
@@ -99,10 +92,11 @@ public class ExploreFragment extends Fragment {
                         catList.clear();
                         catList.addAll(hashSet);
 
+                        // Add Data to Explore Model List by its category
+
                         List<ExpModel> expModelArrayList = new ArrayList<>();
                         for (int i = 0; i<catList.size(); i++) {
                             List<ProductModel> productModelList1 = new ArrayList<>();
-                         //   productModelList1.clear();
                             for (ProductModel productModel : productModelList) {
                                 if (productModel.getCategory().equalsIgnoreCase(catList.get(i))) {
                                     productModelList1.add(productModel);
@@ -114,12 +108,7 @@ public class ExploreFragment extends Fragment {
                         rateRecyclerView.setAdapter(expAdapter);
                         expAdapter.notifyDataSetChanged();
                     }
-
-//                    HomeAdapter homeAdapter = new HomeAdapter(productModelList, getContext(), true, true,false, true);
-//                    rateRecyclerView.setAdapter(homeAdapter);
                     progressDialog.dismiss();
-//                    homeAdapter.notifyDataSetChanged();
-//                    expAdapter.notifyDataSetChanged();
                 }
 
                 @Override

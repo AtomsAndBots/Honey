@@ -199,6 +199,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
             bind.linearLayoutPrice.setVisibility(View.GONE);
         }
 
+        // Code to view on Web
         if (product.getURL().isEmpty()){
             bind.viewOnWeb.setVisibility(View.GONE);
         }
@@ -285,16 +286,6 @@ public class ProductDetailsActivity extends AppCompatActivity {
     }
 
     private void EnterInDraw(final ProductModel product) {
-//        HashMap<String, Object> hashMap = new HashMap<>();
-    /*    hashMap.put("Image", product.getImage());
-        hashMap.put("ProductName", product.getProductName());
-        hashMap.put("Description", product.getDescription());
-        hashMap.put("Price", product.getPrice());
-        hashMap.put("Category", product.getCategory());
-        hashMap.put("ProductId", product.getProductId());
-
-     */
-//        hashMap.put(product)
         reference.child(product.getProductId()).setValue(product)
                 .addOnCompleteListener(new OnCompleteListener<Void>() {
                     @Override

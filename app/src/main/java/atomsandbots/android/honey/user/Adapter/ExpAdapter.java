@@ -19,6 +19,8 @@ import atomsandbots.android.honey.user.R;
 
 import static androidx.recyclerview.widget.RecyclerView.*;
 
+// Adapter for Explore Fragment
+
 public class ExpAdapter extends RecyclerView.Adapter<ExpAdapter.ViewHolder> {
     private List<ExpModel> expModels;
 

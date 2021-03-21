@@ -35,6 +35,8 @@ import java.util.HashMap;
 
 import atomsandbots.android.honey.user.R;
 
+// Simply add two new fields for new Data, one for Sponcered and other for url
+
 public class NewProductActivity extends AppCompatActivity {
     private ImageView productImage;
     private EditText Name, Price, Description, ID,URL;

@@ -281,7 +281,7 @@ public class ProductDetailsActivity extends AppCompatActivity {
         bind.productTitle.setText(product.getProductName());
         bind.productPrice.setText(String.format("$%s", product.getPrice()));
         bind.productDescription.setText(product.getDescription());
-        if (product.isSponcered()) {
+        if (product.isSponsored()) {
             bind.sponcerd.setVisibility(View.VISIBLE);
         }
 
